@@ -77,3 +77,9 @@ class TextChoices(Choices, StrEnum):
     @staticmethod
     def _generate_next_value_(name, start, count, last_values):
         return name
+    
+    @staticmethod
+    def from_enum(enum_cls, name=None):
+        """Create a TextChoices class from an existing Enum class."""
+        attrs = {member.name: member.value for member in enum_cls}
+        return TextChoices(name or enum_cls.__name__, attrs)
