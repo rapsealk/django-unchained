@@ -81,5 +81,5 @@ class TextChoices(Choices, StrEnum):
     @classmethod
     def from_enum(cls, enum_cls, name=None):
         """Create a TextChoices class from an existing Enum class."""
-        attrs = {member.name: member.value for member in enum_cls}
+        attrs = [(member.name, member.value) for member in enum_cls]
         return cls(name or enum_cls.__name__, attrs)
